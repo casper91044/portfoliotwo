@@ -2,27 +2,14 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import MobileRightMenuSlider from "@material-ui/core/Drawer"
-import {
-    AppBar,
-    Toolbar,
-    ListItem,
-    IconButton,
-    ListItemText,
-    Avatar,
-    Divider,
-    List,
-    Typography,
-    Box
-} from "@material-ui/core";
-import {
-    ArrowBack,
-    AssignmentInd,
-    Home,
-    Apps, ContactMail
-} from "@material-ui/icons";
+import {AppBar, Toolbar, ListItem, IconButton, ListItemText, Avatar, Divider, List,
+    Typography, Box} from "@material-ui/core";
+import {ArrowBack, AssignmentInd, Home, Apps, ContactMail} from "@material-ui/icons";
 import avatar from "../portfolio-project-files/warrior, ninja, avatar, samurai png icon.png"
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Grid from "@material-ui/core/Grid";
+import Footer from "./Footer";
+
 //CSS STYLES
 const useStyles = makeStyles(theme =>({
     menuSliderContainer: {
@@ -63,6 +50,7 @@ const menuItems = [
         listPath: "/contacts"
     }
 ]
+
 const Navbar = () => {
     const [state,setState] = useState ({
         right: false
@@ -95,7 +83,7 @@ const Navbar = () => {
         <>
         <Box component="nav">
             <AppBar position="static" style={{background: "#222"}}>
-                <Grid container justify="flex-end">
+                <Grid  container justify="flex-end">
                     <Toolbar>
                         <IconButton onClick={toggleSlider("right",true)}>
                             <ArrowBack style={{color:"tomato"}}/>
@@ -103,10 +91,12 @@ const Navbar = () => {
                         <Typography variant="h5" style={{color: "tan"}}>
                             Portfolio
                         </Typography>
-                        <MobileRightMenuSlider anchor={"right"}
-                                               open={state.right}
-                                               onClose={toggleSlider("right",false)}>
+                        <MobileRightMenuSlider
+                            anchor={"right"}
+                            open={state.right}
+                            onClose={toggleSlider("right",false)}>
                             {sideList("right") }
+                            <Footer/>
                         </MobileRightMenuSlider>
                     </Toolbar>
                 </Grid>
